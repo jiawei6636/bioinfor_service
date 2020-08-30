@@ -1,0 +1,53 @@
+﻿{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    service programme - code page
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div id="main_title">Resource page</div>
+        <h3>Code</h3>
+        <p>
+            The program is wrote by Tensorflow in python in our paper. And the result can be downloaded
+            <a href="{% static '/Analysis_DeepAVP.xlsx' %}">here</a> and the code can be downloaded
+            <a href="#">here</a>
+        </p>
+
+        <br/><br/><br/>
+
+        <h3> Datasets </h3>
+        <p>
+            In our study, we focus on the recognition of antiviral peptides.
+            Here, we evaluate on the well-established dataset, which is proposed by
+            <a href="http://crdd.osdd.net/servers/avppred/">Nishant et al</a>.
+            The peptide sequences are collected with a reported antiviral activity against human viruses like HIV, HCV,
+            SARS and Influenza, etc.
+            More than 90% of antiviral peptides are extracted from natural source, and remaining peptides have synthetic
+            source.
+            <br/><br/>
+            We make use of 604 highly effective antiviral peptides and 452 least or non-effective antiviral peptides,
+            as one training set T <sup>544p+407n</sup> (544 positive and 407 negative) and one validation set
+            V<sup>60p+45n</sup> (60 positive and 45 negative).
+            Also, we take non-experimental negative peptides, as one training set T<sup>544p+544n*</sup> and one
+            validation set V<sup>60p+60n*</sup>.
+            The negative peptides have been employed in earlier antimicrobial peptide prediction method
+            <a href="https://link.springer.com/article/10.1186/1471-2105-11-S1-S19">AntiBP2</a>.
+            And the dataset can be downloaded <a href="{% static '/Dataset.xlsx' %}">here</a>.
+            <br/><br/>
+            With the development of antiviral peptides (AVPs) research, in addition to the previous dataset, the AVPs
+            databases have emerged in large numbers.
+            We summarize the commonly used databases including antiviral peptides, and list the relevant information in
+            Table 1. To update and expand the size of dataset,
+            we extract 916 highly effective antiviral peptides from four different datasets (AVPdb, APD3, CAMPR3, LAMP)
+            and 452 non-effective antiviral peptides from one dataset (AVPdb).
+            The homologous sequences are removed by CD-hit if they shared a high sequence identity (greater than 90%)
+            with any sequence in the dataset.
+            Finally, we obtain 413 AVPs and 348 non-AVPs as a novel non-redundant AVPs dataset. And the dataset can be
+            download <a href="{% static '/new_Dataset.xlsx' %}">here</a>
+        </p>
+
+        <br/><br/><br/>
+    </main>
+{% endblock %}

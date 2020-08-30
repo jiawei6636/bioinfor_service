@@ -1,0 +1,19 @@
+p{
+    width:800px;
+    word-wrap: break-word;
+}
+
+.example{
+    width:800px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-radius:15px;
+    -webkit-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    -o-transform: translate(-50%, 0%);
+    transform: translate(-50%, 0%);
+    padding:20px;
+    border:hidden;
+}

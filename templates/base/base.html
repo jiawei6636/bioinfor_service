@@ -1,0 +1,51 @@
+{# Load the static url prefix #}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {# title block #}
+        {% block title %}{% endblock %}
+    </title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+</head>
+<body>
+<!-- header -->
+<header>
+    <div id="header_logo"></div>
+    <div id="header_slogan"></div>
+    <div id="header_lab">
+        <ul>
+            <li><a href="http://lbci.tju.edu.cn/Gallery.htm">Gallery</a></li>
+            <li><a href="http://lbci.tju.edu.cn/Teaching.htm">Teaching</a></li>
+            <li><a href="http://lbci.tju.edu.cn/Members.htm">Members</a></li>
+            <li><a href="http://lbci.tju.edu.cn/Research_project.htm">Research project</a></li>
+            <li><a href="http://lbci.tju.edu.cn/Published_papers.htm">Published papers</a></li>
+            <li><a href="http://lbci.tju.edu.cn/Online_services.htm">Online services</a></li>
+            <li><a href="http://lbci.tju.edu.cn/Research_direction.htm">Research direction</a></li>
+            <li><a href="http://lbci.tju.edu.cn/">Home</a></li>
+        </ul>
+    </div>
+    <div id="header_server">
+        <a href="{% url 'server' %}">Server</a>
+        <a href="{% url 'detail' %}">Detail</a>
+        <a href="{% url 'resource' %}">Resource</a>
+        <a href="{% url 'contact' %}">Contact</a>
+    </div>
+</header>
+
+<!-- main -->
+{# content block #}
+{% block content %}{% endblock %}
+
+<!-- footer -->
+<footer>
+    Address：Building 55B, Peiyang Park Campus No.135, Yaguan Road, Tianjin Haihe Education Park, Tianjin, China &nbsp;|&nbsp;
+    P.C.：300050<br/>
+    Copyright：School of Computer Science and Technology, TianJin University. All Rights Reserved.
+</footer>
+</body>

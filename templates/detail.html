@@ -1,0 +1,49 @@
+﻿{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    service programme - index page
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div id="main_title">Detail page</div>
+        <h3> Service Detail:</h3>
+        <p>
+            As shown in Figure 1, our model can process original variable-length protein sequence with One-hot encode.
+            The model has two channels that includes LSTM module and CONV module.
+            <br/><br/>
+            In this paper, we propose a computational method based on deep neural network for predicting antiviral
+            peptides, and also fine-tune the substitution matrix for specifically functional peptide. Our model is a
+            dual-channel deep neural network, in order to extract different dimensional features from original
+            variable-length sequence data. The LSTM module imports the peptide sequence length as an important element
+            to classify the antiviral peptide. The bi-directional recurrent neural network (B-LSTM) can capture
+            long-term dependencies for effectively studying sequential data. The CONV module applies the substitution
+            matrix as kernels to extract the convolutional features. The dynamic neural network can deal with the
+            variable length sequence data for analyzing the local evolution information. The final joint module
+            concatenates the LSTM and CONV channels by two fully-connected layers, which integrates the evidence to
+            classify the antiviral peptide.
+            <br/><br/>
+            Our predictive model has several key competitive advantages. First important characteristic of our model is
+            that we process sequence data with no need for the feature extraction, whereas the LSTM and CONV channels
+            can analyze peptide sequence from sequential and evolutionary levels, respectively. Furthermore, the PSSM
+            feature extraction layer in the CONV channel can transform the original BLOSUM matrix into the specific
+            evolutionary substitution matrix for antiviral peptide dataset. We can also use this strategy to generate
+            the refined BLOSUM matrix in order to fit different peptide sequence learning task. Even more important, the
+            input of our model is variable length sequence, which is just a peptide with any length from several
+            residues to hundred or thousand residues. It is interesting to achieve that we only train the truth length
+            peptides although we encode the sequence to max length one-hot code. In the LSTM channel, we use the state
+            output with the time step specific to the sequence length. In the CONV channel, we add AvBlock layer to do
+            average block on the sequence length PSSM matrix.
+        </p>
+
+        <div style="text-align: center">
+            <img alt="flow" src="{% static '/model.png' %}" style="height: 500px;"/>
+            <p>Fig.1. DeepAVP Model.</p>
+        </div>
+
+        <br/><br/><br/><br/>
+
+    </main>
+{% endblock %}
+

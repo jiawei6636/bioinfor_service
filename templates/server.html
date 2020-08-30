@@ -1,0 +1,117 @@
+﻿{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}
+    service programme - index page
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div id="main_title">Server page</div>
+        <h3> Offline processing of protein sequences file:</h3>
+        <form action="{% url 'offline_service' %}" method="post"
+              enctype="multipart/form-data" onsubmit="return check_1()">
+            {% csrf_token %}
+            <table style="width: 100%">
+                <tr>
+                    <td style="width: 200px; height: 35px; text-align: right">
+                        <label for="email">E-mail address:</label>
+                    </td>
+                    <td>
+                        <input id="email" type="text" name="myemail">
+                    </td>
+                    <td style="width: 200px"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px; height: 60px; text-align: right">
+                        Protein sequence file:<br/>
+                        (<a href="{% static '/45_nonantiviral_peptide.txt' %}">example</a>)
+                    </td>
+                    <td>
+                        <input id="file" type="file" name="myfile">
+                    </td>
+                    <td style="width: 200px"></td>
+                </tr>
+                <tr>
+                    <td style=" text-align: right">Note:</td>
+                    <td style="background-color: #F5F5F5">
+                        <p>Your submission must be a ".txt" file. We will process immediately and return result via
+                            email. Please confirm your email address!</p>
+                    </td>
+                    <td style="width: 200px"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px; height: 35px; text-align: right"></td>
+                    <td><input id="file_submit" type="submit" value="submit"></td>
+                    <td style="width: 200px"></td>
+                </tr>
+            </table>
+        </form>
+
+        <br/><br/>
+
+        <h3> Online processing of protein sequence:</h3>
+        <form action="{% url 'online_service' %}" method="post" onsubmit="return check_2()">
+            {% csrf_token %}
+            <table style="width: 100%">
+                <tr>
+                    <td style="width: 200px; text-align: right">
+                        Protein sequence:<br/>(<a href="{% url 'example' %}">example</a>)
+                    </td>
+                    <td>
+                        <label for="text"></label>
+                        <textarea name="myseq" cols="50" rows="5" id="text" style="border:1px solid #666"></textarea>
+                    </td>
+                    <td style="width: 200px"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">Note:</td>
+                    <td style="background-color: #F5F5F5">
+                        <p>You can input multiple sequence that one sequence one line. We will return
+                            all labels' probabilities.<br/>(The sequence's length must more than 4.)</p>
+                    </td>
+                    <td style="width: 200px"></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px; height: 35px; text-align: right"></td>
+                    <td><input type="submit" value="submit"></td>
+                    <td style="width: 200px"></td>
+                </tr>
+            </table>
+        </form>
+
+        <br/><br/><br/><br/>
+    </main>
+
+    <script type="text/javascript">
+        function check_1() {
+            var my_mail = document.getElementById("email").value;
+            var my_file = document.getElementById("file").value;
+            if (!my_mail) {
+                alert("Please enter your email address");
+                return false;
+            }
+            if (!my_file) {
+                alert("Please select file");
+                return false;
+            }
+            if (my_file.indexOf('.txt') < 0) {
+                alert('You have to submit a file with the .txt format!');
+                return false;
+            }
+            return true;
+        }
+
+        function check_2() {
+            var my_text = document.getElementById("text").value;
+            if (!my_text) {
+                alert("Please enter your protein sequence");
+                return false;
+            }
+            return true;
+        }
+    </script>
+{% endblock %}
+
+
+
